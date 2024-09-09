@@ -1,45 +1,42 @@
-import pytest
 import main
+import os
+import pytest
 
-# Define the path to your local data file
-local_file_path = 'C:/ganti.b/SEM3/DE/cis6930fa24-assignment0/loadfile.json'
+# Define the path to the JSON file
+local_file_path = os.path.join(os.path.dirname(__file__), '..', 'loadfile.json')
 
-# Test to ensure data is loaded and non-empty from the local file
+# Test to ensure data is loaded from the local JSON file and non-empty
 def test_load_data():
     data = main.load_local_data(local_file_path)
     assert 'items' in data  
     assert isinstance(data['items'], list)  
     assert len(data['items']) > 0  
 
-# Test extracting title from the local file data
 def test_extract_title():
     data = main.load_local_data(local_file_path)
-    item = data['items'][0] 
+    item = data['items'][0]  # Assuming we're testing the first item
     assert 'title' in item  
-    assert isinstance(item['title'], str)  
+    assert isinstance(item['title'], str)
 
-# Test extracting subjects from the local file data
 def test_extract_subjects():
     data = main.load_local_data(local_file_path)
-    item = data['items'][0]  
+    item = data['items'][0]  # Testing the first item
     assert 'subjects' in item  
     assert isinstance(item['subjects'], list)  
 
-# Test extracting field offices from the local file data
 def test_extract_field_offices():
     data = main.load_local_data(local_file_path)
-    item = data['items'][0]
+    item = data['items'][0]  # Testing the first item
     
-    # Ensure 'field_offices' exists and is not None
-    if 'field_offices' in item and item['field_offices'] is not None:
+    # Ensure 'field_offices' exists and is a list
+    if 'field_offices' in item:
         assert isinstance(item['field_offices'], list)
     else:
-        assert False, "'field_offices' is either missing or None"
+        assert False, "'field_offices' is missing"
 
-# Test to print thorn-separated fields from the local file data
 def test_print_thorn_separated():
     data = main.load_local_data(local_file_path)
-    item = data['items'][0]
+    item = data['items'][0]  # Testing the first item
     
     # Extract the fields with safe defaults for missing values
     title = item.get('title', 'No title available')
@@ -51,3 +48,4 @@ def test_print_thorn_separated():
     
     # Ensure the output is not empty
     assert thorn_separated
+
