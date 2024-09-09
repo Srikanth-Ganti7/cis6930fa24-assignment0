@@ -2,7 +2,7 @@ import pytest
 import main
 
 # Define the path to your local data file
-local_file_path = 'C:/ganti.b/SEM3/DE/cis6930fa24-assignment0/loadfile'
+local_file_path = 'C:/ganti.b/SEM3/DE/cis6930fa24-assignment0/loadfile.json'
 
 # Test to ensure data is loaded and non-empty from the local file
 def test_load_data():
