@@ -20,13 +20,13 @@ def test_extract_title():
 
 def test_extract_subjects():
     data = main.load_local_data(local_file_path)
-    item = data['items'][0]  # Testing the first item
+    item = data['items'][0]  
     assert 'subjects' in item  
     assert isinstance(item['subjects'], list)  
 
 def test_extract_field_offices():
     data = main.load_local_data(local_file_path)
-    item = data['items'][0]  # Testing the first item
+    item = data['items'][0]  
     
     # Ensure 'field_offices' exists and is a list
     if 'field_offices' in item:
@@ -36,7 +36,7 @@ def test_extract_field_offices():
 
 def test_print_thorn_separated():
     data = main.load_local_data(local_file_path)
-    item = data['items'][0]  # Testing the first item
+    item = data['items'][0]  
     
     # Extract the fields with safe defaults for missing values
     title = item.get('title', 'No title available')

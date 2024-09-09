@@ -10,35 +10,35 @@ def fetch_data_from_random_page():
 
 # Test to ensure data is downloaded and non-empty
 def test_fetch_data():
-    data = fetch_data_from_random_page()  # Fetch data from a random page
-    assert 'items' in data  # Ensure 'items' key exists
-    assert isinstance(data['items'], list)  # Ensure 'items' is a list
-    assert len(data['items']) > 0  # Ensure 'items' list is not empty
+    data = fetch_data_from_random_page()  
+    assert 'items' in data  
+    assert isinstance(data['items'], list)  
+    assert len(data['items']) > 0  
 
 # Test to ensure that the 'title' field is extracted correctly
 def test_extract_title():
     data = fetch_data_from_random_page()
-    item = data['items'][0]  # Get the first item
-    assert 'title' in item  # Ensure 'title' key exists
-    assert isinstance(item['title'], str)  # Ensure the 'title' is a string
+    item = data['items'][0]  
+    assert 'title' in item  
+    assert isinstance(item['title'], str)  
 
 # Test to ensure that the 'subjects' field is extracted correctly
 def test_extract_subjects():
     data = fetch_data_from_random_page()
-    item = data['items'][0]  # Get the first item
-    assert 'subjects' in item  # Ensure 'subjects' key exists
-    assert isinstance(item['subjects'], list)  # Ensure 'subjects' is a list
+    item = data['items'][0]  
+    assert 'subjects' in item  
+    assert isinstance(item['subjects'], list)  
 
 # Test to ensure that 'field_offices' field is extracted correctly
 def test_extract_field_offices():
     data = fetch_data_from_random_page()
-    item = data['items'][0]  # Get the first item
+    item = data['items'][0]  
 
     # Ensure 'field_offices' exists and is a list
     if 'field_offices' in item and item['field_offices'] is not None:
         assert isinstance(item['field_offices'], list), "'field_offices' is not a list"
     else:
-        # Pass the test if 'field_offices' does not exist or is None, since that is valid data
+        
         assert item['field_offices'] is None or 'field_offices' not in item, "'field_offices' is either missing or None"
 
 
@@ -49,28 +49,16 @@ def test_print_thorn_separated():
     
     # Extract fields with safe defaults
     title = item.get('title', 'No title available')
-    subjects = ','.join(item.get('subjects', []))  # Join subjects with commas
+    subjects = ','.join(item.get('subjects', []))  
     field_offices = ','.join(item.get('field_offices', []) if item.get('field_offices') else [])
     
     thorn_separated = f"{title}þ{subjects}þ{field_offices}"
-    print(thorn_separated)  # Print the thorn-separated values
+    print(thorn_separated)  
     
     # Ensure the output is not empty
     assert thorn_separated
 
-# Test that API is being called and data is being fetched successfully
-def test_api_called():
-    data = fetch_data_from_random_page()
-    
-    # Check that API call returns valid data and ensure that it's non-empty
-    assert data is not None  # Ensure we got a response
-    assert 'items' in data  # Ensure 'items' key exists
-    assert len(data['items']) > 0  # Ensure 'items' list is not empty
 
-# Test fetching data from a random page
-def test_random_page_fetch():
-    data = fetch_data_from_random_page()
-    assert 'items' in data
-    assert isinstance(data['items'], list)
-    assert len(data['items']) > 0
+
+
 
