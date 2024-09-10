@@ -82,6 +82,26 @@ In this project, two test files are used: `test_randompage.py` tests API functio
 - **test_print_thorn_separated**: Verifies that title, subjects, and field_offices fields are formatted and printed with thorn separators.
 
 
+## How to run tests:
+Make sure the following are installed in your environment:
+
+1. **pipenv**: Used to manage the virtual environment.
+2. **pytest**: Python testing framework.
+
+To install all dependencies, run:
+
+```bash
+pipenv install
+
+```
+
+To run the testcases you go with the following command:
+
+```bash
+pipenv run python -m pytest -v
+```
+
+
 ## Bugs and Assumptions:
 
 1.  **Bugs**: 
